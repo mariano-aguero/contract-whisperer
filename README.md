@@ -48,7 +48,7 @@ A modern dApp that analyzes Ethereum smart contracts using artificial intelligen
 ## 📋 Prerequisites
 
 - Node.js 18+ or higher
-- npm, pnpm or yarn
+- pnpm (recommended package manager)
 - API Keys:
   - Anthropic API Key (for Claude AI)
   - Etherscan API Key
@@ -65,12 +65,10 @@ cd contract-whisperer
 2. **Install dependencies**
 
 ```bash
-npm install
-# or
 pnpm install
-# or
-yarn install
 ```
+
+> **Note**: This project uses pnpm as the package manager. If you don't have pnpm installed, you can install it with `npm install -g pnpm` or visit [pnpm.io](https://pnpm.io/installation) for other installation methods.
 
 3. **Configure environment variables**
 
@@ -97,11 +95,7 @@ BASESCAN_API_KEY=your_basescan_api_key
 4. **Run in development mode**
 
 ```bash
-npm run dev
-# or
 pnpm dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
