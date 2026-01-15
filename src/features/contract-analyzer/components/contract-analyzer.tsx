@@ -16,6 +16,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { AlertCircle, Loader2, Search } from "lucide-react"
 import { AnalysisResults } from "./analysis-results"
+import { AnalysisSkeleton } from "./analysis-skeleton"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 export function ContractAnalyzer() {
@@ -104,7 +105,7 @@ export function ContractAnalyzer() {
             )}
           </Button>
 
-          {hasErrored && (
+          {hasErrored && !isExecuting && (
             <div className="flex items-start gap-2 rounded-lg border border-destructive bg-destructive/10 p-4">
               <AlertCircle className="h-5 w-5 text-destructive" />
               <div className="flex-1 space-y-1">
@@ -119,7 +120,8 @@ export function ContractAnalyzer() {
         </CardContent>
       </Card>
 
-      {result?.data && <AnalysisResults analysis={result.data} />}
+      {isExecuting && <AnalysisSkeleton />}
+      {!isExecuting && result?.data && <AnalysisResults analysis={result.data} />}
     </div>
   )
 }

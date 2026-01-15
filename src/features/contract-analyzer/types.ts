@@ -9,6 +9,46 @@ export interface ContractAnalysis {
   contractName?: string
   compiler?: string
   optimization?: boolean
+  isProxy?: boolean
+  implementation?: ContractImplementation
+  isERC20?: boolean
+  tokenInfo?: TokenInfo
+  securityAnalysis?: SecurityAnalysis
+  isVerified?: boolean
+}
+
+export interface TokenInfo {
+  name: string
+  symbol: string
+  decimals: number
+  totalSupply?: string
+}
+
+export interface SecurityAnalysis {
+  overallRisk: "safe" | "low" | "medium" | "high" | "critical"
+  riskScore: number // 0-100, where 0 is safe and 100 is critical
+  threats: SecurityThreat[]
+  recommendation: string
+}
+
+export interface SecurityThreat {
+  type: "honeypot" | "scam" | "rugpull" | "malicious" | "backdoor" | "fake-token" | "soft-rug"
+  severity: "low" | "medium" | "high" | "critical"
+  confidence: number // 0-100, confidence level of the detection
+  description: string
+  indicators: string[] // List of specific indicators found
+}
+
+export interface ContractImplementation {
+  address: string
+  summary: string
+  risks: Risk[]
+  functions: ContractFunction[]
+  sourceCode?: string
+  contractName?: string
+  compiler?: string
+  optimization?: boolean
+  isVerified?: boolean
 }
 
 export interface Risk {

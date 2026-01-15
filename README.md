@@ -1,15 +1,36 @@
 # Contract Whisperer 🔮
 
-A modern dApp that analyzes Ethereum smart contracts using artificial intelligence (Claude AI) to provide clear explanations, identify security risks, and analyze transactions.
+A modern dApp that analyzes Ethereum smart contracts using artificial intelligence (Claude AI) to provide clear explanations, identify security risks, detect scams, and analyze transactions.
 
 ## ✨ Features
 
+### Core Analysis
 - 🤖 **AI-Powered Analysis**: Uses Claude AI (Anthropic) to analyze contracts and explain their functionality in simple language
 - 🔍 **Risk Identification**: Detects dangerous functions, scam patterns, centralization issues, and vulnerabilities
 - 📊 **Function Analysis**: Explains the main contract functions with clear descriptions
-- 📜 **Transaction History**: Shows the latest contract transactions
-- 🌐 **Multi-Network**: Supports Ethereum mainnet and Base
-- 🎨 **Modern UI**: Interface built with Tailwind CSS and shadcn/ui
+- 📜 **Transaction History**: Shows the latest contract transactions with status indicators
+
+### Security Analysis
+- 🛡️ **Advanced Security Detection**: Comprehensive threat detection system that identifies:
+  - **Honeypots**: Tokens you can buy but cannot sell
+  - **Scam Tokens**: General fraudulent tokens designed to steal funds
+  - **Rug Pulls**: Contracts where teams can withdraw liquidity or dump supply
+  - **Malicious/Backdoor**: Hidden owner-controlled functions and backdoors
+  - **Fake Tokens**: Impersonation tokens copying legitimate projects
+  - **Soft Rugs**: Abusive practices like excessive taxes or hidden unlocks
+- 📊 **Security Gauge**: Visual risk score indicator (0-100) with color-coded threat levels
+- ✅ **Contract Verification**: Checks if contracts are verified on blockchain explorers
+
+### Smart Contract Support
+- 🔄 **Proxy Contract Detection**: Automatically detects and analyzes both proxy and implementation contracts
+- 🪙 **ERC20 Token Support**: Identifies ERC20 tokens and displays token information (name, symbol, decimals, total supply)
+- 🌐 **Multi-Network**: Supports Ethereum mainnet and Base network
+
+### User Interface
+- 🎨 **Modern UI**: Beautiful interface built with Tailwind CSS and shadcn/ui
+- 🌓 **Dark/Light Mode**: Toggle between dark and light themes
+- ⚡ **Loading States**: Skeleton screens for better user experience
+- 🎯 **Color-Coded Indicators**: Risk levels and transaction statuses with appropriate colors
 
 ## 🛠️ Tech Stack
 

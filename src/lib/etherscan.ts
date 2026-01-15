@@ -3,7 +3,10 @@ import type {
   EtherscanContractResponse,
   EtherscanABIResponse,
   EtherscanTransactionResponse,
+  TokenInfo,
 } from "@/features/contract-analyzer/types"
+import { createPublicClient, http, type Address } from "viem"
+import { mainnet, base } from "viem/chains"
 
 const ETHERSCAN_API_URL = "https://api.etherscan.io/v2/api"
 const BASESCAN_API_URL = "https://api.etherscan.io/v2/api"
@@ -176,3 +179,105 @@ export function parseABI(abiString: string): any[] {
     return []
   }
 }
+
+/**
+ * Checks if a contract is an ERC20 token by verifying standard functions in the ABI
+ */
+export function isERC20Token(abi: any[]): boolean {
+  const requiredFunctions = [
+    'name',
+    'symbol',
+    'decimals',
+    'totalSupply',
+    'balanceOf',
+    'transfer'
+  ]
+
+  const functionNames = abi
+    .filter((item) => item.type === 'function')
+    .map((item) => item.name)
+
+  return requiredFunctions.every((fn) => functionNames.includes(fn))
+}
+
+/**
+ * Fetches token information from the blockchain using viem
+ */
+export async function getTokenInfo(
+  address: string,
+  network: "ethereum" | "base" = "ethereum"
+): Promise<TokenInfo | null> {
+  const chain = network === "ethereum" ? mainnet : base
+  
+  const client = createPublicClient({
+    chain,
+    transport: http(),
+  })
+
+  const erc20Abi = [
+    {
+      name: 'name',
+      type: 'function',
+      stateMutability: 'view',
+      inputs: [],
+      outputs: [{ type: 'string' }],
+    },
+    {
+      name: 'symbol',
+      type: 'function',
+      stateMutability: 'view',
+      inputs: [],
+      outputs: [{ type: 'string' }],
+    },
+    {
+      name: 'decimals',
+      type: 'function',
+      stateMutability: 'view',
+      inputs: [],
+      outputs: [{ type: 'uint8' }],
+    },
+    {
+      name: 'totalSupply',
+      type: 'function',
+      stateMutability: 'view',
+      inputs: [],
+      outputs: [{ type: 'uint256' }],
+    },
+  ] as const
+
+  try {
+    const [name, symbol, decimals, totalSupply] = await Promise.all([
+      client.readContract({
+        address: address as Address,
+        abi: erc20Abi,
+        functionName: 'name',
+      }),
+      client.readContract({
+        address: address as Address,
+        abi: erc20Abi,
+        functionName: 'symbol',
+      }),
+      client.readContract({
+        address: address as Address,
+        abi: erc20Abi,
+        functionName: 'decimals',
+      }),
+      client.readContract({
+        address: address as Address,
+        abi: erc20Abi,
+        functionName: 'totalSupply',
+      }),
+    ])
+
+    return {
+      name: name as string,
+      symbol: symbol as string,
+      decimals: decimals as number,
+      totalSupply: totalSupply?.toString(),
+    }
+  } catch (error) {
+    console.error('Error fetching token info:', error)
+    return null
+  }
+}
+
