@@ -79,7 +79,7 @@ export function SecurityGauge({ riskScore, overallRisk, className }: SecurityGau
 
           {/* Gauge ticks */}
           {[0, 25, 50, 75, 100].map((tick) => {
-            const angle = -90 + (tick / 100) * 180
+            const angle = -180 + (tick / 100) * 180
             const radians = (angle * Math.PI) / 180
             const x1 = 100 + 70 * Math.cos(radians)
             const y1 = 100 + 70 * Math.sin(radians)
