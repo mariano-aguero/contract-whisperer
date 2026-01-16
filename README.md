@@ -34,7 +34,7 @@ A modern dApp that analyzes Ethereum smart contracts using artificial intelligen
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Next.js 15 (App Router)
+- **Framework**: Next.js 16.1.2 (App Router)
 - **Language**: TypeScript 5
 - **Styling**: Tailwind CSS + shadcn/ui
 - **UI Components**: Radix UI
@@ -224,4 +224,4 @@ For questions or suggestions, open an issue in the repository.
 
 ---
 
-Made with ❤️ using Next.js 15 and Claude AI
+Made with ❤️ using Next.js 16.1.2 and Claude AI

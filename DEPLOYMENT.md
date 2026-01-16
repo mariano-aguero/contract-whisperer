@@ -33,6 +33,6 @@ Click on **"Deploy"**. Vercel will compile the project and provide you with a pu
 
 ## 🛠️ Additional Notes
 
-*   **Runtime**: The project uses Next.js 15, which is fully compatible with Vercel's Node.js runtime.
+*   **Runtime**: The project uses Next.js 16.1.2, which is fully compatible with Vercel's Node.js runtime.
 *   **Server Actions**: Analysis functions use Server Actions, which work automatically as Serverless Functions on Vercel.
 *   **Time Limits**: Analyzing complex contracts can take a few seconds. Vercel has a runtime limit for serverless functions (10s on the Hobby plan). If you encounter timeouts, consider optimizing API calls or upgrading to a Pro plan if necessary.
