@@ -4,6 +4,8 @@ This guide details the steps to deploy **Contract Whisperer** on Vercel.
 
 ## 🚀 Deployment Steps
 
+The project is currently deployed at: **[https://contract-whisperer-one.vercel.app/](https://contract-whisperer-one.vercel.app/)**
+
 ### 1. Prepare the Repository
 Make sure your code is in a GitHub, GitLab, or Bitbucket repository.
 

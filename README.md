@@ -1,6 +1,10 @@
 # Contract Whisperer 🔮
 
+[![Deploy with Vercel](https://vercel.com/button)](https://contract-whisperer-one.vercel.app/)
+
 A modern dApp that analyzes Ethereum smart contracts using artificial intelligence (Claude AI) to provide clear explanations, identify security risks, detect scams, and analyze transactions.
+
+**Live Demo**: [https://contract-whisperer-one.vercel.app/](https://contract-whisperer-one.vercel.app/)
 
 ## ✨ Features
 
