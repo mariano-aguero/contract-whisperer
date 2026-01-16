@@ -182,11 +182,11 @@ shadcn/ui components are in `src/components/ui/` and can be modified directly ac
 ## 📝 Available Scripts
 
 ```bash
-npm run dev          # Run in development mode
-npm run build        # Build for production
-npm run start        # Run in production mode
-npm run lint         # Run ESLint
-npm run format       # Format code with Prettier
+pnpm run dev          # Run in development mode
+pnpm run build        # Build for production
+pnpm run start        # Run in production mode
+pnpm run lint         # Run ESLint
+pnpm run format       # Format code with Prettier
 ```
 
 ## 🤝 Contributing
