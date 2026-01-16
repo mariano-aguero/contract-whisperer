@@ -13,7 +13,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { AlertCircle, Loader2, Search } from "lucide-react"
 import { AnalysisResults } from "./analysis-results"
 import { AnalysisSkeleton } from "./analysis-skeleton"
@@ -23,9 +22,11 @@ export function ContractAnalyzer() {
   const [address, setAddress] = useState("")
   const [network, setNetwork] = useState<"ethereum" | "base">("ethereum")
 
-  const { execute, result, isExecuting, hasErrored } = useAction(
+  const { execute, result, isExecuting } = useAction(
     analyzeContractAction
   )
+
+  const hasErrored = result?.serverError || result?.validationErrors
 
   const handleAnalyze = () => {
     if (!address) return
@@ -112,6 +113,7 @@ export function ContractAnalyzer() {
                 <p className="text-sm font-medium text-destructive">Error</p>
                 <p className="text-sm text-muted-foreground">
                   {result?.serverError ||
+                    (result?.validationErrors && "Invalid address format") ||
                     "Could not analyze the contract. Verify that the address is correct and the contract is verified."}
                 </p>
               </div>
