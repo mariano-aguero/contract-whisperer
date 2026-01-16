@@ -199,6 +199,12 @@ Contributions are welcome. Please:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
+## 🚀 Deployment
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Deployment Guide](DEPLOYMENT.md) for step-by-step instructions on how to integrate with Vercel and configure environment variables.
+
 ## 📄 License
 
 This project is under the MIT license.
