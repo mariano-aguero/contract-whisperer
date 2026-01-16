@@ -30,6 +30,33 @@ function getAnthropicClient(): Anthropic {
   return anthropicClient
 }
 
+function handleAnthropicError(error: unknown): never {
+  console.error("Anthropic API Error:", error)
+
+  if (error instanceof Error) {
+    // Check for credit/quota issues
+    const errorMessage = error.message.toLowerCase()
+    if (
+      errorMessage.includes("credit") ||
+      errorMessage.includes("balance") ||
+      errorMessage.includes("quota") ||
+      errorMessage.includes("insufficient_funds") ||
+      errorMessage.includes("billing_limit") ||
+      errorMessage.includes("over_quota") ||
+      errorMessage.includes("rate_limit") ||
+      (error as any).status === 429
+    ) {
+      throw new Error(
+        "The AI service is currently unavailable. Please try again later."
+      )
+    }
+
+    throw new Error(`Failed to analyze contract with AI: ${error.message}`)
+  }
+
+  throw new Error("Failed to analyze contract with AI")
+}
+
 export async function analyzeContract(
   sourceCode: string,
   contractName: string,
@@ -117,11 +144,7 @@ Be concise but thorough. Prioritize high-severity issues.`
 
     return analysis
   } catch (error) {
-    console.error("Error analyzing contract with Claude:", error)
-    if (error instanceof Error) {
-      throw new Error(`Failed to analyze contract with AI: ${error.message}`)
-    }
-    throw new Error("Failed to analyze contract with AI")
+    handleAnthropicError(error)
   }
 }
 
@@ -292,11 +315,7 @@ Guidelines:
 
     return securityAnalysis
   } catch (error) {
-    console.error("Error analyzing contract security with Claude:", error)
-    if (error instanceof Error) {
-      throw new Error(`Failed to analyze contract security with AI: ${error.message}`)
-    }
-    throw new Error("Failed to analyze contract security with AI")
+    handleAnthropicError(error)
   }
 }
 
