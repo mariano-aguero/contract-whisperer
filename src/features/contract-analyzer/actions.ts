@@ -138,6 +138,10 @@ export const analyzeContractAction = actionClient
     } catch (error) {
       console.error("Error analyzing contract:", error)
       if (error instanceof Error) {
+        // If it's our friendly AI error, pass it through without the prefix
+        if (error.message.includes("AI service is currently unavailable")) {
+          throw error
+        }
         throw new Error(`Failed to analyze contract: ${error.message}`)
       }
       throw new Error("Failed to analyze contract")

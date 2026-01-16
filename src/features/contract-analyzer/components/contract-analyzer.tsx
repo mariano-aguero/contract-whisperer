@@ -112,9 +112,12 @@ export function ContractAnalyzer() {
               <div className="flex-1 space-y-1">
                 <p className="text-sm font-medium text-destructive">Error</p>
                 <p className="text-sm text-muted-foreground">
-                  {result?.serverError ||
-                    (result?.validationErrors && "Invalid address format") ||
-                    "Could not analyze the contract. Verify that the address is correct and the contract is verified."}
+                  {result?.serverError ===
+                  "The AI service is currently unavailable. Please try again later."
+                    ? "The AI service is currently unavailable. Please try again later."
+                    : result?.serverError ||
+                      (result?.validationErrors && "Invalid address format") ||
+                      "Could not analyze the contract. Verify that the address is correct and the contract is verified."}
                 </p>
               </div>
             </div>
