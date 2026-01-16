@@ -1,15 +1,8 @@
 "use client"
 
-import {
-  Card,
-} from "@/components/ui/card"
+import { Card } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import {
-  Code,
-  History,
-  Shield,
-  ShieldAlert,
-} from "lucide-react"
+import { Code, History, Shield, ShieldAlert } from "lucide-react"
 import type { ContractAnalysis } from "../types"
 import { ResultHeader, ResultSummary } from "./results/result-info"
 import { RisksTab } from "./results/risks-tab"

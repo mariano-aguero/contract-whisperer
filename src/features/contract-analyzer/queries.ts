@@ -1,7 +1,7 @@
 import {
   getContractSourceCode,
   getContractABI,
-  parseABI
+  parseABI,
 } from "@/lib/etherscan"
 import { analyzeContract as analyzeContractAI } from "@/lib/anthropic"
 
@@ -67,7 +67,9 @@ export async function analyzeSingleContract(
   const contract = contractData.result[0]
 
   // Check if contract is verified (has source code)
-  const isVerified = !!(contract.SourceCode && contract.SourceCode.trim() !== "")
+  const isVerified = !!(
+    contract.SourceCode && contract.SourceCode.trim() !== ""
+  )
 
   if (!contract.SourceCode) {
     throw new Error(

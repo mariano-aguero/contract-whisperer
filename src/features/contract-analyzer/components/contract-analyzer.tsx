@@ -22,9 +22,7 @@ export function ContractAnalyzer() {
   const [address, setAddress] = useState("")
   const [network, setNetwork] = useState<"ethereum" | "base">("ethereum")
 
-  const { execute, result, isExecuting } = useAction(
-    analyzeContractAction
-  )
+  const { execute, result, isExecuting } = useAction(analyzeContractAction)
 
   const hasErrored = result?.serverError || result?.validationErrors
 
@@ -126,7 +124,9 @@ export function ContractAnalyzer() {
       </Card>
 
       {isExecuting && <AnalysisSkeleton />}
-      {!isExecuting && result?.data && <AnalysisResults analysis={result.data} />}
+      {!isExecuting && result?.data && (
+        <AnalysisResults analysis={result.data} />
+      )}
     </div>
   )
 }

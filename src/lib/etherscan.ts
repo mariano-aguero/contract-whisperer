@@ -31,7 +31,9 @@ export async function getContractSourceCode(
   })
 
   if (!response.ok) {
-    throw new Error(`Failed to fetch contract source code: ${response.statusText}`)
+    throw new Error(
+      `Failed to fetch contract source code: ${response.statusText}`
+    )
   }
 
   const data: EtherscanContractResponse = await response.json()
@@ -185,16 +187,16 @@ export function parseABI(abiString: string): any[] {
  */
 export function isERC20Token(abi: any[]): boolean {
   const requiredFunctions = [
-    'name',
-    'symbol',
-    'decimals',
-    'totalSupply',
-    'balanceOf',
-    'transfer'
+    "name",
+    "symbol",
+    "decimals",
+    "totalSupply",
+    "balanceOf",
+    "transfer",
   ]
 
   const functionNames = abi
-    .filter((item) => item.type === 'function')
+    .filter((item) => item.type === "function")
     .map((item) => item.name)
 
   return requiredFunctions.every((fn) => functionNames.includes(fn))
@@ -208,7 +210,7 @@ export async function getTokenInfo(
   network: "ethereum" | "base" = "ethereum"
 ): Promise<TokenInfo | null> {
   const chain = network === "ethereum" ? mainnet : base
-  
+
   const client = createPublicClient({
     chain,
     transport: http(),
@@ -216,32 +218,32 @@ export async function getTokenInfo(
 
   const erc20Abi = [
     {
-      name: 'name',
-      type: 'function',
-      stateMutability: 'view',
+      name: "name",
+      type: "function",
+      stateMutability: "view",
       inputs: [],
-      outputs: [{ type: 'string' }],
+      outputs: [{ type: "string" }],
     },
     {
-      name: 'symbol',
-      type: 'function',
-      stateMutability: 'view',
+      name: "symbol",
+      type: "function",
+      stateMutability: "view",
       inputs: [],
-      outputs: [{ type: 'string' }],
+      outputs: [{ type: "string" }],
     },
     {
-      name: 'decimals',
-      type: 'function',
-      stateMutability: 'view',
+      name: "decimals",
+      type: "function",
+      stateMutability: "view",
       inputs: [],
-      outputs: [{ type: 'uint8' }],
+      outputs: [{ type: "uint8" }],
     },
     {
-      name: 'totalSupply',
-      type: 'function',
-      stateMutability: 'view',
+      name: "totalSupply",
+      type: "function",
+      stateMutability: "view",
       inputs: [],
-      outputs: [{ type: 'uint256' }],
+      outputs: [{ type: "uint256" }],
     },
   ] as const
 
@@ -250,22 +252,22 @@ export async function getTokenInfo(
       client.readContract({
         address: address as Address,
         abi: erc20Abi,
-        functionName: 'name',
+        functionName: "name",
       }),
       client.readContract({
         address: address as Address,
         abi: erc20Abi,
-        functionName: 'symbol',
+        functionName: "symbol",
       }),
       client.readContract({
         address: address as Address,
         abi: erc20Abi,
-        functionName: 'decimals',
+        functionName: "decimals",
       }),
       client.readContract({
         address: address as Address,
         abi: erc20Abi,
-        functionName: 'totalSupply',
+        functionName: "totalSupply",
       }),
     ])
 
@@ -276,8 +278,7 @@ export async function getTokenInfo(
       totalSupply: totalSupply?.toString(),
     }
   } catch (error) {
-    console.error('Error fetching token info:', error)
+    console.error("Error fetching token info:", error)
     return null
   }
 }
-

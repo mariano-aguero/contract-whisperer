@@ -111,7 +111,7 @@ Be concise but thorough. Prioritize high-severity issues.`
 
   try {
     const anthropic = getAnthropicClient()
-    
+
     const message = await anthropic.messages.create({
       model: "claude-sonnet-4-5-20250929",
       max_tokens: 16384,
@@ -133,12 +133,19 @@ Be concise but thorough. Prioritize high-severity issues.`
 
     if (!analysis) {
       console.error("Could not parse JSON from Claude response")
-      console.error("Response text (first 1000 chars):", content.text.substring(0, 1000))
+      console.error(
+        "Response text (first 1000 chars):",
+        content.text.substring(0, 1000)
+      )
       throw new Error("Could not parse JSON from Claude response")
     }
 
     // Validate the structure
-    if (!analysis.summary || !Array.isArray(analysis.risks) || !Array.isArray(analysis.functions)) {
+    if (
+      !analysis.summary ||
+      !Array.isArray(analysis.risks) ||
+      !Array.isArray(analysis.functions)
+    ) {
       throw new Error("Invalid analysis structure from Claude")
     }
 
@@ -282,7 +289,7 @@ Guidelines:
 
   try {
     const anthropic = getAnthropicClient()
-    
+
     const message = await anthropic.messages.create({
       model: "claude-sonnet-4-5-20250929",
       max_tokens: 16384,
@@ -303,13 +310,24 @@ Guidelines:
     const securityAnalysis = parseJSONFromText<SecurityAnalysis>(content.text)
 
     if (!securityAnalysis) {
-      console.error("Could not parse JSON from Claude security analysis response")
-      console.error("Response text (first 1000 chars):", content.text.substring(0, 1000))
-      throw new Error("Could not parse JSON from Claude security analysis response")
+      console.error(
+        "Could not parse JSON from Claude security analysis response"
+      )
+      console.error(
+        "Response text (first 1000 chars):",
+        content.text.substring(0, 1000)
+      )
+      throw new Error(
+        "Could not parse JSON from Claude security analysis response"
+      )
     }
 
     // Validate the structure
-    if (!securityAnalysis.overallRisk || typeof securityAnalysis.riskScore !== 'number' || !Array.isArray(securityAnalysis.threats)) {
+    if (
+      !securityAnalysis.overallRisk ||
+      typeof securityAnalysis.riskScore !== "number" ||
+      !Array.isArray(securityAnalysis.threats)
+    ) {
       throw new Error("Invalid security analysis structure from Claude")
     }
 
@@ -318,4 +336,3 @@ Guidelines:
     handleAnthropicError(error)
   }
 }
-

@@ -40,7 +40,11 @@ export function RisksTab({
       <CardHeader>
         <CardTitle>
           Risk Analysis{" "}
-          {isProxy ? "(Proxy Contract)" : isImplementation ? "(Implementation)" : ""}
+          {isProxy
+            ? "(Proxy Contract)"
+            : isImplementation
+              ? "(Implementation)"
+              : ""}
         </CardTitle>
         <CardDescription>
           Potential risks identified by AI{" "}
@@ -56,7 +60,7 @@ export function RisksTab({
         ) : (
           <div className="space-y-4">
             {risks.map((risk, index) => (
-              <div key={index} className="rounded-lg border p-4 space-y-2">
+              <div key={index} className="space-y-2 rounded-lg border p-4">
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex items-center gap-2">
                     <AlertTriangle
@@ -71,7 +75,9 @@ export function RisksTab({
                     <h4 className="font-semibold">{risk.title}</h4>
                   </div>
                   <div className="flex gap-2">
-                    <Badge variant={getRiskColor(risk.level)}>{risk.level}</Badge>
+                    <Badge variant={getRiskColor(risk.level)}>
+                      {risk.level}
+                    </Badge>
                     <Badge variant="outline">{risk.category}</Badge>
                   </div>
                 </div>

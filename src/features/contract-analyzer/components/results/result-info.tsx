@@ -43,7 +43,7 @@ export function ResultHeader({
             )}
           </CardTitle>
           {tokenInfo && (
-            <p className="text-sm text-muted-foreground mt-1">
+            <p className="mt-1 text-sm text-muted-foreground">
               {tokenInfo.name} ({tokenInfo.symbol})
             </p>
           )}

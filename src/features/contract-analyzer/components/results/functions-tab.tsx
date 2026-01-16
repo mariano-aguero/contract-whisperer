@@ -33,7 +33,11 @@ export function FunctionsTab({
       <CardHeader>
         <CardTitle>
           Main Functions{" "}
-          {isProxy ? "(Proxy Contract)" : isImplementation ? "(Implementation)" : ""}
+          {isProxy
+            ? "(Proxy Contract)"
+            : isImplementation
+              ? "(Implementation)"
+              : ""}
         </CardTitle>
         <CardDescription>
           Contract functions with explanations{" "}
@@ -49,7 +53,7 @@ export function FunctionsTab({
             >
               <AccordionTrigger>
                 <div className="flex items-center gap-2">
-                  <code className="text-sm font-mono">{func.name}</code>
+                  <code className="font-mono text-sm">{func.name}</code>
                   <Badge variant="outline" className="text-xs">
                     {func.stateMutability}
                   </Badge>

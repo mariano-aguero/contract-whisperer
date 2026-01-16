@@ -8,7 +8,11 @@ interface SecurityGaugeProps {
   className?: string
 }
 
-export function SecurityGauge({ riskScore, overallRisk, className }: SecurityGaugeProps) {
+export function SecurityGauge({
+  riskScore,
+  overallRisk,
+  className,
+}: SecurityGaugeProps) {
   // Calculate needle rotation: -90deg (left/safe) to 90deg (right/critical)
   const rotation = -90 + (riskScore / 100) * 180
 
@@ -59,7 +63,13 @@ export function SecurityGauge({ riskScore, overallRisk, className }: SecurityGau
         >
           {/* Background arc segments */}
           <defs>
-            <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <linearGradient
+              id="gaugeGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="0%"
+            >
               <stop offset="0%" stopColor="#22c55e" />
               <stop offset="25%" stopColor="#3b82f6" />
               <stop offset="50%" stopColor="#eab308" />

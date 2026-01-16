@@ -62,7 +62,7 @@ export function SecurityTab({ securityAnalysis }: SecurityTabProps) {
             <div className="space-y-4">
               <h3 className="text-sm font-semibold">Detected Threats</h3>
               {securityAnalysis.threats.map((threat, index) => (
-                <div key={index} className="rounded-lg border p-4 space-y-3">
+                <div key={index} className="space-y-3 rounded-lg border p-4">
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex items-center gap-2">
                       <AlertTriangle

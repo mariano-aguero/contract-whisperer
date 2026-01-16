@@ -10,7 +10,11 @@ import {
 } from "@/lib/etherscan"
 import { analyzeContractSecurity as analyzeContractSecurityAI } from "@/lib/anthropic"
 import { isAddress, formatEther } from "viem"
-import type { ContractAnalysis, Transaction, ContractImplementation } from "./types"
+import type {
+  ContractAnalysis,
+  Transaction,
+  ContractImplementation,
+} from "./types"
 import { analyzeSingleContract, delay } from "./queries"
 
 const analyzeContractSchema = z.object({
@@ -83,15 +87,26 @@ export const analyzeContractAction = actionClient
       }
 
       // 5. If it's a proxy, analyze the implementation contract
-      if (isProxy && implementationAddress && isAddress(implementationAddress)) {
+      if (
+        isProxy &&
+        implementationAddress &&
+        isAddress(implementationAddress)
+      ) {
         try {
-          console.log(`Analyzing implementation contract: ${implementationAddress}`)
+          console.log(
+            `Analyzing implementation contract: ${implementationAddress}`
+          )
 
           // Add delay before analyzing implementation contract
           await delay(300)
 
-          const implAnalysis = await analyzeSingleContract(implementationAddress, network)
-          console.log(`Implementation analysis completed successfully for ${implementationAddress}`)
+          const implAnalysis = await analyzeSingleContract(
+            implementationAddress,
+            network
+          )
+          console.log(
+            `Implementation analysis completed successfully for ${implementationAddress}`
+          )
 
           const implementation: ContractImplementation = {
             address: implementationAddress,

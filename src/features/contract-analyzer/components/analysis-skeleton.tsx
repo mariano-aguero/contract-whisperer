@@ -62,7 +62,7 @@ export function AnalysisSkeleton() {
             </CardHeader>
             <CardContent className="space-y-4">
               {[1, 2, 3].map((i) => (
-                <div key={i} className="rounded-lg border p-4 space-y-2">
+                <div key={i} className="space-y-2 rounded-lg border p-4">
                   <div className="flex items-start justify-between gap-2">
                     <Skeleton className="h-5 w-48" />
                     <div className="flex gap-2">
@@ -93,7 +93,7 @@ export function AnalysisSkeleton() {
               </div>
 
               {/* Recommendation Placeholder */}
-              <div className="rounded-lg border bg-muted/50 p-4 space-y-2">
+              <div className="space-y-2 rounded-lg border bg-muted/50 p-4">
                 <Skeleton className="h-5 w-40" />
                 <Skeleton className="h-4 w-full" />
                 <Skeleton className="h-4 w-3/4" />
@@ -103,7 +103,7 @@ export function AnalysisSkeleton() {
               <div className="space-y-4">
                 <Skeleton className="h-5 w-48" />
                 {[1, 2].map((i) => (
-                  <div key={i} className="rounded-lg border p-4 space-y-3">
+                  <div key={i} className="space-y-3 rounded-lg border p-4">
                     <div className="flex items-start justify-between gap-2">
                       <Skeleton className="h-5 w-40" />
                       <div className="flex gap-2">

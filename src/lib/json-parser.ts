@@ -52,7 +52,7 @@ export function parseJSONFromText<T = any>(text: string): T | null {
  * using brace balancing and correctly handling strings and escaped characters.
  */
 function extractBalancedJSON(text: string, startPos: number): string | null {
-  const firstBrace = text.indexOf('{', startPos)
+  const firstBrace = text.indexOf("{", startPos)
   if (firstBrace === -1) {
     return null
   }
@@ -70,7 +70,7 @@ function extractBalancedJSON(text: string, startPos: number): string | null {
       continue
     }
 
-    if (char === '\\') {
+    if (char === "\\") {
       escapeNext = true
       continue
     }
@@ -81,9 +81,9 @@ function extractBalancedJSON(text: string, startPos: number): string | null {
     }
 
     if (!inString) {
-      if (char === '{') {
+      if (char === "{") {
         braceCount++
-      } else if (char === '}') {
+      } else if (char === "}") {
         braceCount--
         if (braceCount === 0) {
           jsonEnd = i + 1

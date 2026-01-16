@@ -36,11 +36,13 @@ export function TransactionsTab({ transactions }: TransactionsTabProps) {
             >
               <div className="space-y-1">
                 <div className="flex items-center gap-2">
-                  <code className="text-xs font-mono">
+                  <code className="font-mono text-xs">
                     {truncateAddress(tx.hash)}
                   </code>
                   <Badge
-                    variant={tx.status === "success" ? "success" : "destructive"}
+                    variant={
+                      tx.status === "success" ? "success" : "destructive"
+                    }
                     className="text-xs"
                   >
                     {tx.status}

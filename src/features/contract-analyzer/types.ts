@@ -32,7 +32,14 @@ export interface SecurityAnalysis {
 }
 
 export interface SecurityThreat {
-  type: "honeypot" | "scam" | "rugpull" | "malicious" | "backdoor" | "fake-token" | "soft-rug"
+  type:
+    | "honeypot"
+    | "scam"
+    | "rugpull"
+    | "malicious"
+    | "backdoor"
+    | "fake-token"
+    | "soft-rug"
   severity: "low" | "medium" | "high" | "critical"
   confidence: number // 0-100, confidence level of the detection
   description: string
