@@ -32,7 +32,7 @@ export function ContractAnalyzer() {
   }
 
   return (
-    <div className="container mx-auto max-w-6xl space-y-8 py-8">
+    <div className="container mx-auto flex max-w-6xl flex-1 flex-col space-y-8 py-8">
       <div className="flex items-start justify-between">
         <div className="flex-1 space-y-2 text-center">
           <h1 className="text-4xl font-bold tracking-tight">
@@ -127,6 +127,8 @@ export function ContractAnalyzer() {
       {!isExecuting && result?.data && (
         <AnalysisResults analysis={result.data} />
       )}
+
+      <div className="flex-1" />
 
       <footer className="mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 md:flex-row">
         <p className="text-sm text-muted-foreground">

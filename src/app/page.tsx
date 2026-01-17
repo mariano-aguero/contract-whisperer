@@ -2,7 +2,7 @@ import { ContractAnalyzer } from "@/features/contract-analyzer/components/contra
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="flex min-h-screen flex-col bg-background">
       <ContractAnalyzer />
     </main>
   )
