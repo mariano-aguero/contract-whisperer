@@ -13,7 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { AlertCircle, Loader2, Search } from "lucide-react"
+import { Github, AlertCircle, Loader2, Search } from "lucide-react"
 import { AnalysisResults } from "./analysis-results"
 import { AnalysisSkeleton } from "./analysis-skeleton"
 import { ThemeToggle } from "@/components/theme-toggle"
@@ -127,6 +127,23 @@ export function ContractAnalyzer() {
       {!isExecuting && result?.data && (
         <AnalysisResults analysis={result.data} />
       )}
+
+      <footer className="mt-12 flex flex-col items-center justify-between gap-4 border-t pt-8 md:flex-row">
+        <p className="text-sm text-muted-foreground">
+          © {new Date().getFullYear()} Contract Whisperer.
+        </p>
+        <div className="flex items-center gap-4">
+          <a
+            href="https://github.com/mariano-aguero/contract-whisperer"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <Github className="h-4 w-4" />
+            GitHub Repository
+          </a>
+        </div>
+      </footer>
     </div>
   )
 }

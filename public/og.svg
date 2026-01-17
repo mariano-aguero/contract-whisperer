@@ -1,0 +1,25 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#09090B"/>
+  <defs>
+    <radialGradient id="grad1" cx="25%" cy="25%" r="50%" fx="25%" fy="25%">
+      <stop offset="0%" style="stop-color:#27272A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#27272A;stop-opacity:0" />
+    </radialGradient>
+    <radialGradient id="grad2" cx="75%" cy="75%" r="50%" fx="75%" fy="75%">
+      <stop offset="0%" style="stop-color:#27272A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#27272A;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grad1)"/>
+  <rect width="1200" height="630" fill="url(#grad2)"/>
+
+  <rect x="200" y="165" width="800" height="300" rx="24" fill="#09090B" fill-opacity="0.8" stroke="#27272A" stroke-width="1"/>
+
+  <text x="600" y="290" font-family="Arial, sans-serif" font-size="64" font-weight="bold" fill="#FFFFFF" text-anchor="middle">
+    🔮 Contract Whisperer
+  </text>
+
+  <text x="600" y="360" font-family="Arial, sans-serif" font-size="28" fill="#A1A1AA" text-anchor="middle">
+    AI-Powered Smart Contract Analysis for Ethereum &amp; Base
+  </text>
+</svg>
