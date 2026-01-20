@@ -136,6 +136,17 @@ export function ContractAnalyzer() {
         </p>
         <div className="flex items-center gap-4">
           <a
+            href="https://github.com/mariano-aguero/contract-whisperer/actions/workflows/ci.yml"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="https://github.com/mariano-aguero/contract-whisperer/actions/workflows/ci.yml/badge.svg"
+              alt="CI Status"
+              className="h-5"
+            />
+          </a>
+          <a
             href="https://github.com/mariano-aguero/contract-whisperer"
             target="_blank"
             rel="noopener noreferrer"

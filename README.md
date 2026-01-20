@@ -1,5 +1,6 @@
 # Contract Whisperer 🔮
 
+[![CI](https://github.com/mariano-aguero/contract-whisperer/actions/workflows/ci.yml/badge.svg)](https://github.com/mariano-aguero/contract-whisperer/actions/workflows/ci.yml)
 [![Deploy with Vercel](https://vercel.com/button)](https://contract-whisperer-one.vercel.app/)
 
 A modern dApp that analyzes Ethereum smart contracts using artificial intelligence (Claude AI) to provide clear explanations, identify security risks, detect scams, and analyze transactions.
@@ -152,6 +153,48 @@ contract-whisperer/
    - **Risks**: Review identified security risks
    - **Functions**: Explore main functions with explanations
    - **Transactions**: Check recent transaction history
+
+## 🧠 How it Works
+
+The following diagram explains the internal workflow of Contract Whisperer when analyzing a smart contract:
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant A as Next.js Server Action
+    participant E as Etherscan/Basescan API
+    participant AI as Claude AI (Anthropic)
+
+    U->>A: Enter Address & Network
+    Note over A: Validate Address (viem)
+
+    A->>E: Get Contract Source Code
+    E-->>A: Source Code & Metadata
+
+    alt is Proxy?
+        A->>E: Get Implementation Address
+        E-->>A: Implementation Address
+        A->>E: Get Implementation Source Code
+        E-->>A: Implementation Source Code
+    end
+
+    A->>E: Get Contract ABI
+    E-->>A: ABI
+
+    rect rgb(240, 240, 240)
+        Note right of A: AI Analysis Phase
+        A->>AI: Send Source Code + ABI
+        AI-->>A: Function Explanations & General Risks
+
+        A->>AI: Send Source Code + Metadata
+        AI-->>A: Security Analysis (Honeypot, Rugpull, etc.)
+    end
+
+    A->>E: Get Recent Transactions
+    E-->>A: Transaction History
+
+    A-->>U: Display Comprehensive Analysis Results
+```
 
 ## 🏗️ Architecture
 
